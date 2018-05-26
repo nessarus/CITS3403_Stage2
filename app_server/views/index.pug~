@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  //h1= title 
+  //p Welcome to #{title} 
+  //p= 'This page is about ' + title  
+  //p An insecure way !{title} 
+  //p= 'This page is about ${title}'
+  if (!user)
+    a(href="/login") Login
+  br
+  a(href="/register") Register
+    if (user)
+      p You are currently logged in as #{user.username}
+      a(href="/logout") Logout
+
+

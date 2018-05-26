@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  if (!user)
+    a(href="/login") LoginA
+    br
+    a(href="/register") Register
+  if (user)
+    h1= title
+    h3 Welcome #{user.username} #[a(href= '/logout') Logout]
+    each project in projects
+      .project
+        li= project.title
+        li= project.description
+        ol.tasks 
+          each task in project.tasks
+            li #{task.title} #[a(href= '/'+ project._id + '/delete/' + task._id) Delete]
+        form(action="/"+project._id+"/new", method="post")
+          label(for="title") Title:
+          input(id='title', type='text', name='title')
+          label(for="deadline") Deadline:
+          input(id='deadline', type='date', name='deadline')
+          input(type='submit', value='Submit')               
+        a(href='/delete/' + project._id) Delete          
+
+    form(action="/", method="post")
+      label(for="title") Title:
+      input(id='title', type='text', name='title')
+      label(for="description") Description:
+      input(id='description', type='text', name='description')
+      input(type='submit', value='Submit')      
