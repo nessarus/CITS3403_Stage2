@@ -1,20 +1,26 @@
 var express = require('express');
-var ctrlMain = require('../controllers/projects');
+var ctrlProjects = require('../controllers/projects');
 var ctrlAcc = require('../controllers/account');
+var ctrlChat = require('../controllers/chat');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', ctrlAcc.welcome);
-router.get('/projects', ctrlMain.prjList);
-router.post('/projects', ctrlMain.newPrj);
+router.get('/register', ctrlAcc.register);
+router.get('/profile', ctrlAcc.profile);
+router.get('/projects', ctrlProjects.prjList);
+router.get('/chat', ctrlAcc.chat);
+router.get('/about', ctrlAcc.about);
 
+router.get('/projects', ctrlProjects.prjList);
+router.get('/new_project', ctrlProjects.prjCreate);
 
-router.get('/delete/:id', ctrlMain.delPrj);
-//router.get('/:id/', ctrlMain.taskList);
-router.post('/:id/new', ctrlMain.newTask);
-router.get('/:pid/delete/:tid', ctrlMain.delTask);
+router.get('/delete/:id', ctrlProjects.delPrj);
+//router.get('/:id/', ctrlProjects.taskList);
+router.post('/:id/new', ctrlProjects.newTask);
+router.get('/:pid/delete/:tid', ctrlProjects.delTask);
 
-router.get('/register', ctrlAcc.regForm);
+router.get('/register', ctrlAcc.register);
 router.post('/register', ctrlAcc.regist);
 router.get('/login', ctrlAcc.loginForm);
 router.post('/login', ctrlAcc.login);

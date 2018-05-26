@@ -28,8 +28,8 @@ function index(req, res, next){
 }
 
 //Retrieve
-module.exports.prjCreate = pCreate;
-function pCreate(req, res, next){
+module.exports.prjCreate = index;
+function index(req, res, next){
     Project.find().exec(
         function(err, data){
             if(err){

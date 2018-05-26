@@ -1,0 +1,19 @@
+// JavaScript source code
+
+function restform() {
+    document.getElementById("myForm").reset();
+}
+
+function dater() {
+    var node = document.createElement("p");
+    var dateThis = "Last Modified Date: " + document.lastModified;
+    var textnode = document.createTextNode(dateThis);
+    node.appendChild(textnode);
+    document.getElementById("footer").appendChild(node);
+
+    node = document.createElement("p");
+    var d = new Date();
+    textnode = document.createTextNode(d.toTimeString());
+    node.appendChild(textnode);
+    document.getElementById("footer").appendChild(node);
+}

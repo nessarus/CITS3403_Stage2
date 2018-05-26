@@ -7,14 +7,28 @@ var passport = require('passport');
 //welcome page
 module.exports.welcome = index;
 function index(req, res){
-    res.render('index', { user : req.user });
+    res.render('index', { user : req.user, title : 'gameDev' });
 }
 
+//profile page
+module.exports.profile = function(req, res){
+    res.render('profile', { user : req.user, title : 'Profile' });
+}
+
+//chat page
+module.exports.chat = function(req, res){
+    res.render('chat', { user : req.user, title : 'Chat' });
+}
+
+//about page
+module.exports.about = function(req, res){
+    res.render('about', { user : req.user, title : 'About' });
+}
 
 //var Account = mongoose.model('Account');
 
-module.exports.regForm = function(req, res) {
-    res.render('register', { });
+module.exports.register = function(req, res) {
+    res.render('registeruser', { user : req.user, title : 'Register' });
 };
 
 
@@ -33,7 +47,7 @@ module.exports.regist = function(req, res) {
 };
 
 module.exports.loginForm = function(req, res) {
-    res.render('login', { user : req.user });
+    res.render('loginpage', { user : req.user });
 };
 
 module.exports.login =  function(req, res) {

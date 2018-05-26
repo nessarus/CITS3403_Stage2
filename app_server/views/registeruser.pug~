@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  section
+    // The padding was necessary as the content kept overlaying the nav otherwise
+    h2 Registation
+    form
+    fieldset
+      legend Personal infomation:
+      table
+        tr
+          td Username:
+          td
+            input(type='text' name='username' value='GameDev' required='required' pattern='^(\w+\S+)$' title='username. no spaces')
+        tr
+          td Password:
+          td
+            input(type='text' name='password' required='required' value='Password1234')
+        tr
+          td First name:
+          td
+            input(type='text' name='lastname' value='Mickey' required='required' pattern='^[A-Z][a-z]+?$' title='First name capitalized. E.g. John')
+        tr
+          td Last name:
+          td
+            input(type='text' name='lastname' value='Mouse' required='required' pattern='^[A-Z][a-z]+?$' title='Last name capitalized. E.g. Doe')
+        tr
+          td Mobile:
+          td
+            input(type='tel' name='phone' pattern='\d{10}' required='required' title='10 digit mobile number' value='0412345678')
+        tr
+          td Email:
+          td
+            input(type='email' name='email' value='example@email.com' required='required' pattern='^[^@ ]+@[A-z]+\.[A-z|\.]+$' title='Email address. E.g. example@email.com')
+    br
+    fieldset
+      legend Qualifications:
+      | &#x9;&#x9;&#x9;&#x9;Areas of Expertise:
+      br
+      textarea(name='expertise' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+      br
+      br
+      | &#x9;&#x9;&#x9;&#x9;Interests:
+      br
+      textarea(name='interests' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+      br
+      br
+      | &#x9;&#x9;&#x9;&#x9;Favourite Game Genres:
+      br
+      textarea(name='genres' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+      br
+    br
+    input(type='submit' value='Register User')
+    input(type='reset' value='Reset Form' onclick='restform()')
+    footer#footer
+    // This script allows for drop down menus and a popup
+    script(src='register.js')
+    script.
+    dater()
