@@ -1,0 +1,92 @@
+doctype html
+// This page is the welcome page of the website
+head
+  title Register
+  meta(charset='utf-8')
+  style.
+    @import "headernav.css";
+//
+  I originally stored the header and navin a seperate file and managed to access them with jQuery. However, Chrome has an issue
+  with allowing a webpage access to files on your computer (even if the webpage comes from your computer) rendering my website completely unusuable
+  on chrome. As this page explains (https://stackoverflow.com/questions/2990518/jquery-load-not-working-in-chrome), it's called the "same origin policy".
+  Not having enough time to find an alternate solution, I instead had to copy and paste the code into all webpages. Sorry about the mess
+header
+  // Turns the logo into a link for the welcome page
+  a(href='welcome.html')
+    // I made this logo using GIMP
+    img(src='logo.PNG' alt='logo' style='margin: 0; height: 100px;')
+// Allows access to all relevant parts of site
+nav
+  // Nav links area.
+  ul
+    li
+      a(href='welcome.html') Home
+    li
+      a(href='register.html') Register
+    li
+      a(href='profile.html') My Profile
+    li
+      a(href='projects.html') My Projects
+    li
+      a(href='chat.html') Chat
+    li
+      a(href='about.html') About
+    li
+      a(href='login.html') Login
+// A brief description of the website
+section
+  // The padding was necessary as the content kept overlaying the nav otherwise
+  h2 Registation
+  form
+    fieldset
+      legend Personal infomation:
+      table
+        tr
+          td Username:
+          td
+            input(type='text' name='username' value='GameDev' required='required' pattern='^(\w+\S+)$' title='username. no spaces')
+        tr
+          td Password:
+          td
+            input(type='text' name='password' required='required' value='Password1234')
+        tr
+          td First name:
+          td
+            input(type='text' name='lastname' value='Mickey' required='required' pattern='^[A-Z][a-z]+?$' title='First name capitalized. E.g. John')
+        tr
+          td Last name:
+          td
+            input(type='text' name='lastname' value='Mouse' required='required' pattern='^[A-Z][a-z]+?$' title='Last name capitalized. E.g. Doe')
+        tr
+          td Mobile:
+          td
+            input(type='tel' name='phone' pattern='\d{10}' required='required' title='10 digit mobile number' value='0412345678')
+        tr
+          td Email:
+          td
+            input(type='email' name='email' value='example@email.com' required='required' pattern='^[^@ ]+@[A-z]+\.[A-z|\.]+$' title='Email address. E.g. example@email.com')
+    br
+    fieldset
+      legend Qualifications:
+      | &#x9;&#x9;&#x9;&#x9;Areas of Expertise:
+      br
+      textarea(name='expertise' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+      br
+      br
+      | &#x9;&#x9;&#x9;&#x9;Interests:
+      br
+      textarea(name='interests' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+      br
+      br
+      | &#x9;&#x9;&#x9;&#x9;Favourite Game Genres:
+      br
+      textarea(name='genres' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+      br
+    br
+    input(type='submit' value='Register User')
+    input(type='reset' value='Reset Form' onclick='restform()')
+footer#footer
+  // This script allows for drop down menus and a popup
+  script(src='register.js')
+  script.
+    dater()
