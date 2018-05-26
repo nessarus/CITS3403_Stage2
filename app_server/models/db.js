@@ -9,10 +9,8 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', err =>  { 
     console.log('Mongoose connection error:', err);
 });
- 
 mongoose.connection.on('disconnected', () => {
     console.log('Mongoose disconnected');
-
 });
 
 const gracefulShutdown = (msg, callback) => { 
@@ -44,3 +42,4 @@ process.on('SIGTERM', () => {
 
 require('./Project');
 require('./account');
+require('./chat.js');

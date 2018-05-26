@@ -1,4 +1,4 @@
-require('..models/db');
+require('../models/db');
 var mongoose = require('mongoose');
 var Message = mongoose.model('Message');
 
@@ -25,7 +25,7 @@ module.exports.disconnect = function(){
     console.log('User Disconnected');
 }
 
-module.expoerts.message = function(msg,io){
+module.exports.message = function(msg,io){
     console.log('message recieved');
     var message = new Message({user:'user?',message:msg,time: new Date()}); //the message to be sent
     message.save(function(err,data){
