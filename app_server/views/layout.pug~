@@ -2,14 +2,46 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='/stylesheets/headernav.css')
+    block scripts
+      script(src='/javascripts/welcome.js')
   body
     header
-      if (!user)
-        a(href="/login") Login
-      br
-      a(href="/register") Register
+        // Turns the logo into a link for the welcome page
+        a(href='/')
+          // I made this logo using GIMP
+          img(src='/images/logo.PNG', alt='logo', style='margin: 0; height: 100px; float: left')
+        br
         if (user)
-          p You are currently logged in as #{user.username}
-          a(href="/logout") Logout
-    block content
+          p Welcome #{user.username}
+  nav
+    // Nav links area.
+    ul
+      li
+        a(href='/') Home
+      li
+        a(href='/register') Register
+      li
+        a(href='/profile') My Profile
+      li
+        a(href='/projects') My Projects
+      li
+        a(href='/chat') Chat
+      li
+        a(href='/about') About
+      li
+        a(href='/login') Login
+  block content
+  block foot
+    footer
+      br
+      // time
+      #dynamic_time
+      script.
+        startTime()
+      #last_date
+      script.
+        dateLastModified()
+    
+

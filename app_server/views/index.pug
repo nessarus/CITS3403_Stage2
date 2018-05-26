@@ -1,17 +1,25 @@
 extends layout
 
 block content
-  //h1= title 
-  //p Welcome to #{title} 
-  //p= 'This page is about ' + title  
-  //p An insecure way !{title} 
-  //p= 'This page is about ${title}'
-  if (!user)
-    a(href="/login") Login
-  br
-  a(href="/register") Register
-    if (user)
-      p You are currently logged in as #{user.username}
-      a(href="/logout") Logout
-
+  section
+    // The padding was necessary as the content kept overlaying the nav otherwise
+    h2 Welcome to GameDev.com
+    h3 How Does GameDev Work?
+    p
+    | Developers of small, indpendant games can create tasks, set deadlines and chat in
+    | organzied communities around their projects.
+    h3 How to get started?
+    p
+    | The Team Leader can register a user account and create a new project and send out invites. 
+    br
+    br
+    |             Team Members can then register a user account and accept invitation in the aside. 
+    br
+    h3 How GameDev makes matching developers to task easier?
+    p
+    | GameDev&apos;s step by step task process: 
+    br
+    p
+    | User post the tasks with the descriptions, requirements, priority and deadline
+    br
 

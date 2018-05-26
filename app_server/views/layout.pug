@@ -4,6 +4,8 @@ html
     title= title
     meta(charset='utf-8')
     link(rel='stylesheet', href='/stylesheets/headernav.css')
+    block scripts
+      script(src='/javascripts/welcome.js')
   body
     header
         // Turns the logo into a link for the welcome page
@@ -30,5 +32,17 @@ html
         a(href='/about') About
       li
         a(href='/login') Login
-
   block content
+  block foot
+    footer
+      br
+      // time
+      #dynamic_time
+      script.
+        startTime()
+      br
+      #last_date
+      script.
+        dateLastModified()
+    
+
