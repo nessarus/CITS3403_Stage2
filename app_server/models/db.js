@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
-var dbURI = 'mongodb://localhost/stage2'; 
+//var dbURI = 'mongodb://localhost/stage2';     
+var dbURI = 'mongodb://admin:bongoadmin@ds225010.mlab.com:25010/gamedevwebsite'; //mlab link to send db data, branches didnt work so the one line is here directly
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', () => { 
