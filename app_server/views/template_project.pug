@@ -1,0 +1,100 @@
+doctype html
+// This page is the welcome page of the website
+head
+  title Template Project
+  meta(charset='utf-8')
+  style.
+    @import "headernav.css";
+    @import "template_project.css"
+//
+  I originally stored the header and navin a seperate file and managed to access them with jQuery. However, Chrome has an issue
+  with allowing a webpage access to files on your computer (even if the webpage comes from your computer) rendering my website completely unusuable
+  on chrome. As this page explains (https://stackoverflow.com/questions/2990518/jquery-load-not-working-in-chrome), it's called the "same origin policy".
+  Not having enough time to find an alternate solution, I instead had to copy and paste the code into all webpages. Sorry about the mess
+header
+  // Turns the logo into a link for the welcome page
+  a(href='welcome.html')
+    // I made this logo using GIMP
+    img(src='logo.PNG' alt='logo' style='margin: 0; height: 100px;')
+// Allows access to all relevant parts of site
+nav
+  // Nav links area.
+  ul
+    li
+      a(href='welcome.html') Home
+    li
+      a(href='register.html') Register
+    li
+      a(href='profile.html') My Profile
+    li
+      a(href='projects.html') My Projects
+    li
+      a(href='chat.html') Chat
+    li
+      a(href='about.html') About
+    li
+      a(href='login.html') Login
+// A brief description of the website
+section
+  // The padding was necessary as the content kept overlaying the nav otherwise
+  h2 Template Project
+  form(action='edit_project_details.html')
+    fieldset
+      legend Project Details:
+      table
+        tr
+          td Game Name:
+          td game name
+      br
+      | &#x9;&#x9;&#x9;&#x9;Game Description:
+      br
+      div(name='game_description') Game description.
+      br
+      input(type='submit' value='Edit Project Details')
+  br
+  form(action='invite.html')
+    fieldset
+      legend Group Members:
+      table
+        tr
+          td Game Leader:
+          td game leader
+        tr
+          td Group members:
+          td Josh, Mia, Connor
+      br
+      input#new_member(type='text' name='new_member' value='')
+      input(type='submit' value='Invite New Member')
+  br
+  form
+    fieldset
+      legend Group Tasks:
+      table#myTable
+        tr
+          th(style='width:18%') Task Name
+          th Task Description
+          th(style='width:18%') Importance
+          th(style='width:8%') Deadline
+          th(style='width:8%') Remove
+        tr
+          td
+            input#newTask(type='text' name='newtask' value='NewTask' style='width:100%')
+          td
+            input#descTask(type='text' name='description' value='' style='width:100%')
+          td
+            select#impTask(style='width:100%')
+              option Urgent
+              option High Priority
+              option(selected='selected') Routine
+              option Low Priority
+              option No Priority
+          td
+            input#dateTask(type='date' name='deadline' style='width:auto')
+          td
+            button(type='button' onclick='insertTask()') Create Task
+  br
+footer#footer
+  // This script allows for drop down menus and a popup
+  script(src='template_project.js')
+  script.
+    dater()

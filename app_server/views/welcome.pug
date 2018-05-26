@@ -1,0 +1,70 @@
+doctype html
+// This page is the welcome page of the website
+head
+  title Welcome
+  meta(charset='utf-8')
+  style.
+    @import "headernav.css";
+//
+  I originally stored the header and navin a seperate file and managed to access them with jQuery. However, Chrome has an issue
+  with allowing a webpage access to files on your computer (even if the webpage comes from your computer) rendering my website completely unusuable
+  on chrome. As this page explains (https://stackoverflow.com/questions/2990518/jquery-load-not-working-in-chrome), it's called the "same origin policy".
+  Not having enough time to find an alternate solution, I instead had to copy and paste the code into all webpages. Sorry about the mess
+header
+  // Turns the logo into a link for the welcome page
+  a(href='welcome.html')
+    // I made this logo using GIMP
+    img(src='logo.PNG' alt='logo' style='margin: 0; height: 100px;')
+// Allows access to all relevant parts of site
+nav
+  // Nav links area.
+  ul
+    li
+      a(href='welcome.html') Home
+    li
+      a(href='register.html') Register
+    li
+      a(href='profile.html') My Profile
+    li
+      a(href='projects.html') My Projects
+    li
+      a(href='chat.html') Chat
+    li
+      a(href='about.html') About
+    li
+      a(href='login.html') Login
+// A brief description of the website
+section
+  // The padding was necessary as the content kept overlaying the nav otherwise
+  h2 Welcome to GameDev.com
+  h3 How Does GameDev Work?
+  p
+    | Developers of small, indpendant games can create tasks, set deadlines and chat in
+    | organzied communities around their projects.
+  h3 How to get started?
+  p
+    | The Team Leader can register a user account and create a new project and send out invites. 
+    br
+    br
+    |             Team Members can then register a user account and accept invitation in the aside. 
+    br
+  h3 How GameDev makes matching developers to task easier?
+  p
+    | GameDev&apos;s step by step task process: 
+    br
+  ul
+    li User post the tasks with the descriptions, requirements, priority and deadline
+    li Team members vote their preference for each task
+    li
+      | The team leader will assign the task assisted suggested team members from the voting
+      | algorithm
+  h3 How the preference voting algorithm make suggestions?
+  p
+    | For each task, the voting algorithm will return the team member(s) with the highest preference
+    | for that task. Team members that been assigned a task will be removed from the search.
+    br
+footer#footer
+  // This script allows for drop down menus and a popup
+  script(src='welcome.js')
+  script.
+    dater()
