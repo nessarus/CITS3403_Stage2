@@ -5,46 +5,42 @@ block scripts
 block content
   section
     h2 Profile
-    form
+    form(action="/profile", method="post")
       fieldset
         legend Edit Personal infomation:
         table
           tr
-            td Password:
-            td
-              input(type='text' name='password' required='required' value='Password1234')
-          tr
             td First name:
             td
-              input(type='text' name='lastname' value='Mickey' required='required' pattern='^[A-Z][a-z]+?$' title='First name capitalized. E.g. John')
+              input(type='text' name='first' value=user.username required='required' pattern='^[A-Z][a-z]+?$' title='First name capitalized. E.g. John')
           tr
             td Last name:
             td
-              input(type='text' name='lastname' value='Mouse' required='required' pattern='^[A-Z][a-z]+?$' title='Last name capitalized. E.g. Doe')
+              input(type='text' name='last' value=user.last required='required' pattern='^[A-Z][a-z]+?$' title='Last name capitalized. E.g. Doe')
           tr
             td Mobile:
             td
-              input(type='tel' name='phone' pattern='\d{10}' required='required' title='10 digit mobile number' value='0412345678')
+              input(type='tel' name='mobile' pattern='\\d{10}' required='required' title='10 digit mobile number' value=user.mobile)
           tr
             td Email:
             td
-              input(type='email' name='email' value='example@email.com' required='required' pattern='^[^@ ]+@[A-z]+\.[A-z|\.]+$' title='Email address. E.g. example@email.com')
+              input(type='email' name='email' value=user.email required='required' pattern='^[^@ ]+@[A-z]+\.[A-z|\.]+$' title='Email address. E.g. example@email.com')
       br
       fieldset
         legend Edit Qualifications:
         | &#x9;&#x9;&#x9;&#x9;Areas of Expertise:
         br
-        textarea(name='expertise' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+        textarea(name='expertise' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')=user.expertise
         br
         br
         | &#x9;&#x9;&#x9;&#x9;Interests:
         br
-        textarea(name='interests' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+        textarea(name='interests' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')=user.interests
         br
         br
         | &#x9;&#x9;&#x9;&#x9;Favourite Game Genres:
         br
-        textarea(name='genres' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+        textarea(name='genres' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')=user.genres
         br
       br
       input(type='submit' value='Confirm Changes')

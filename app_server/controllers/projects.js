@@ -9,6 +9,10 @@ var Project = mongoose.model('Project');
 //Retrieve
 module.exports.prjList = index;
 function index(req, res, next){
+    // if user is not logged-in redirect back to login page //
+    if (req.user == null){
+        res.redirect('/login');
+    }
     Project.find().exec(
         function(err, data){
             if(err){
@@ -74,7 +78,7 @@ module.exports.newPrj = function(req, res, next){
             console.log(data, ' saved');
             index(req,res,next);
         }
-    });   
+    });
 }
 
 module.exports.newTask = function(req, res, next){

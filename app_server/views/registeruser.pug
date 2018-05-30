@@ -2,32 +2,31 @@ extends layout
 
 block content
   section
-    // The padding was necessary as the content kept overlaying the nav otherwise
-    h2 Registation
-    form
+    h2 Registration
+    form(action="/register" method="post")
       fieldset
         legend Personal infomation:
         table
           tr
             td Username:
             td
-              input(type='text' name='username' value='GameDev' required='required' pattern='^(\w+\S+)$' title='username. no spaces')
+              input(id="username" type='text' name='username' value='gamedev' required='required' pattern='^[a-z0-9_-]{3,15}$' title='username. no spaces')
           tr
             td Password:
             td
-              input(type='text' name='password' required='required' value='Password1234')
+              input(id="password" type='text' name='password' required='required' value='Password1234')
           tr
             td First name:
             td
-              input(type='text' name='lastname' value='Mickey' required='required' pattern='^[A-Z][a-z]+?$' title='First name capitalized. E.g. John')
+              input(type='text' name='first' value='Mickey' required='required' pattern='^[A-Z][a-z]+?$' title='First name capitalized. E.g. John')
           tr
             td Last name:
             td
-              input(type='text' name='lastname' value='Mouse' required='required' pattern='^[A-Z][a-z]+?$' title='Last name capitalized. E.g. Doe')
+              input(type='text' name='last' value='Mouse' required='required' pattern='^[A-Z][a-z]+?$' title='Last name capitalized. E.g. Doe')
           tr
             td Mobile:
             td
-              input(type='tel' name='phone' pattern='\d{10}' required='required' title='10 digit mobile number' value='0412345678')
+              input(type='tel' name='mobile' pattern='\\d{10}' required='required' title='10 digit mobile number' value='0412345678')
           tr
             td Email:
             td
