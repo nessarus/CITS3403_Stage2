@@ -13,8 +13,17 @@ html
           // I made this logo using GIMP
           img(src='/images/logo.PNG', alt='logo', style='margin: 0; height: 100px; float: left')
         br
+        //maybe try do a user/not user nav switch for register andf my profile as only one should be visible at a time
+        if (!user)
+          a(href="/login") Login
+          br
+          a(href="/register") Register
+
         if (user)
           p Welcome #{user.username}
+          a(href="/profile") View Profile
+          br
+          a(href="/logout") Logout
   nav
     // Nav links area.
     ul
