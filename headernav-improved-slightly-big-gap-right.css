@@ -1,0 +1,108 @@
+html,body {
+	height:100%;
+	width:100%;
+	padding:0;
+    margin:0;
+}
+
+
+body {
+    background-color: #e5e5e5;
+    height:100%;
+}
+
+header, nav, section {
+    display: block;
+}
+
+body, header, nav {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+header {
+    border-bottom: 2px solid;
+    height: 100px;
+    background-color: orange;
+    text-align: right;
+}
+
+
+nav {
+    display:block;
+    background-color: black;
+    float: left;
+    width: 200px;
+    border-right: 2px solid;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav li a {
+        display: block;
+        color: white;
+        margin-bottom: 2px;
+        padding: 15px 30px;
+        text-decoration: none;
+        background-color: grey;
+    }
+
+        nav li a:hover {
+            background-color: #555;
+            color: white;
+        }
+
+section {
+    padding: 1px;
+    padding-left: 220px;
+    background-color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+footer {
+    display:block;
+    position:relative;
+    float: left;
+    height: 100%;
+    width: 100%;
+    bottom:0%;
+    background-color: #242729;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    text-align: right;
+}
+
+footer p {
+    padding-left: 20px;
+}
+
+/*new stuff */
+ /* Wrapper */
+ #wrapper {
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	margin: 0px auto;
+    padding: 0px;
+	height: 90%;
+	min-height: fit-content;
+}
+
+
+/* Content */
+#content
+{
+	width: -webkit-fill-available;
+}
+
+content{		/* Make Footer stick to bottom*/
+    display:block;
+    height:92.1%;
+    position:fixed;
+}

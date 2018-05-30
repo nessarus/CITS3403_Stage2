@@ -1,0 +1,59 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='/stylesheets/headernav.css')
+    block scripts
+      script(src='/javascripts/index.js')
+  body
+    header
+        // Turns the logo into a link for the welcome page
+        a(href='/')
+          // I made this logo using GIMP
+          img(src='/images/logo.PNG', alt='logo', style='margin: 0; height: 100px; float: left')
+        br
+        //maybe try do a user/not user nav switch for register andf my profile as only one should be visible at a time
+        if (!user)
+          a(href="/login") Login
+          br
+          a(href="/register") Register
+
+        if (user)
+          p Welcome #{user.username}
+          a(href="/profile") View Profile
+          br
+          a(href="/logout") Logout
+#wrapper
+  nav
+    // Nav links area.
+    ul
+      li
+        a(href='/') Home
+      li
+        a(href='/register') Register
+      li
+        a(href='/profile') My Profile
+      li
+        a(href='/projects') My Projects
+      li
+        a(href='/chat') Chat
+      li
+        a(href='/about') About
+      li
+        a(href='/login') Login
+     
+  block content
+#content
+  block foot
+    footer
+      br
+      // time
+      #dynamic_time
+      br
+      #last_date
+      script.
+        startTime()
+        dateLastModified()
+    
+
