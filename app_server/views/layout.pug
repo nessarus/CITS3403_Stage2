@@ -14,34 +14,38 @@ html
           img(src='/images/logo.PNG', alt='logo', style='margin: 0; height: 100px; float: left')
         br
         //maybe try do a user/not user nav switch for register andf my profile as only one should be visible at a time
-        if (!user)
-          a(href="/login") Login
-          br
-          a(href="/register") Register
 
         if (user)
           p Welcome #{user.username}
-          a(href="/profile") View Profile
-          br
-          a(href="/logout") Logout
   nav
     // Nav links area.
+    //login  and logout switch depending on whether logged in or not
+    ///\ sasme with profile and register
+    //u can change it back if you dont like  it/change the order of it for convinence
+    //added new_projects for more stuff as well
     ul
       li
-        a(href='/') Home
-      li
-        a(href='/register') Register
-      li
-        a(href='/profile') My Profile
+        a(href='/') Home      
       li
         a(href='/projects') My Projects
+      li       
+        a(href='/new_project') Create Projects 
       li
         a(href='/chat') Chat
       li
         a(href='/about') About
       li
-        a(href='/login') Login
+        if (!user)
+          a(href='/register') Register
+        if(user)
+          a(href='/profile') My Profile
+      li 
+        if (!user)
+          a(href='/login') Login
+        if (user)
+          a(href="/logout") Logout  
   block content
+  //add breaks to extend page?
   block foot
     footer
       br
