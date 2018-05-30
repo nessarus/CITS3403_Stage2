@@ -3,22 +3,18 @@ extends layout
 block content
   section
     h2 Login
-<<<<<<< HEAD
-    form(action="/login", method="post")
-=======
-    form(action="/login",method="post")
->>>>>>> 7361750f68b9bb2196bcf831a704fd4ca8bf7f1f
+    form
       fieldset
         legend login infomation:
         table
           tr
             td Username:
             td
-              input(id="username" type='text' name='username' required='required')
+              input(type='text' name='username' required='required')
           tr
             td Password:
             td
-              input(id="password" type='text' name='password' required='required')
+              input(type='text' name='password' required='required')
         br
         input(type='submit' value='Login')
         input(type='reset' value='Reset' onclick='restform()')
