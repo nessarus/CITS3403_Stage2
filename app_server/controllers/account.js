@@ -67,7 +67,7 @@ module.exports.regist = function(req, res) {
         req.body.password, 
         function(err, account) {
             if (err) {
-                return res.render('register', { msg : 'rego failed'});
+                return res.render('registeruser', { msg : 'rego failed'});
             }
             passport.authenticate('local')(req, res, function () {
                 res.redirect('/');
