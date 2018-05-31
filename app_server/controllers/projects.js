@@ -32,20 +32,11 @@ function index(req, res, next){
 }
 
 //My Projects page
-module.exports.myProject = myProject;
-function myProject(req, res){
-    res.render('index', { user : req.user, title : 'gameDev' });
-}
-
-
-
-//New Project page
-module.exports.prjCreate = pCreate;
-function pCreate(req, res, next){
+module.exports.myProject = function(req, res){
     if (req.user == null){
         res.redirect('/login');
     }
-    Project.find().exec(
+    Project.findOne({_id:req.params.id},
         function(err, data){
             if(err){
                 res.render('error', {
@@ -54,13 +45,42 @@ function pCreate(req, res, next){
                 })
             }else{
                 console.log('Find complete');
-
-                res.render('new_project', {
-                    title: 'Create New Project', projects:data, user:req.user});
-                    
+                res.render('template_project.pug', { 
+                    user : req.user, 
+                    title : data.title,
+                    project : data
+                });
             }
         }
-    )
+    );
+}
+
+//invite new members
+module.exports.invite = function(req, res, next){
+    Project.update({_id:req.params.id}, {$push: {members:req.body.member}}, function(err,data){
+        if(err){
+            console.log(err);
+            res.status(500);
+            res.render('error',{
+                message:err.message,
+                error:err
+            });
+        }else{
+            console.log(data, 'invited');
+            res.redirect('/projects/'+req.params.id);
+        }
+    });   
+}
+
+//New Project page
+module.exports.prjCreate = pCreate;
+function pCreate(req, res, next){
+    if (req.user == null){
+        res.redirect('/login');
+    }
+    res.render('new_project', {
+        title: 'Create New Project', user:req.user
+    });
 }
 module.exports.prjCre = function(req, res, next){
     var newProject = new Project({
@@ -99,15 +119,52 @@ module.exports.delPrj = function(req, res, next){
     });   
 }
 
-
-/*
-module.exports.prjList = function(req, res, next) {
-    res.render('prjList', { title: 'List of projects', projects: [
-        {title: 'one', description: 'project one', tasks:[{title:"prj 1 task 1"}]},
-        {title: 'two', description: 'project two', tasks:[{title:"prj 2 task 1"}]}
-    ] });
+// Edit project page
+module.exports.editProject = function(req, res, next){
+    if (req.user == null){
+        res.redirect('/login');
+    }
+    Project.findOne({_id:req.params.id},
+        function(err, data){
+            if(err){
+                res.render('error', {
+                    message:err.message,
+                    error:err
+                })
+            }else{
+                console.log('Find complete');
+                res.render('edit_project_details', {
+                    title: 'Edit Project Details',  
+                    user : req.user, 
+                    project : data
+                });
+            }
+        }
+    );
 }
-*/
+module.exports.editPrj = function(req, res, next){    
+    Project.update({_id:req.params.id}, 
+        {
+            $set: {
+                title: req.body.title,
+                description: req.body.description, 
+            }
+        },
+        function(err,data){
+            if(err){
+                console.log(err);
+                res.status(500);
+                res.render('error',{
+                    message:err.message,
+                    error:err
+                });
+            }else{
+                console.log(req.params.id, ' set');
+                res.redirect('/projects');
+            }
+        }
+    );   
+}
 
 module.exports.newPrj = function(req, res, next){
     var newProject = new Project({
@@ -127,6 +184,8 @@ module.exports.newPrj = function(req, res, next){
         }
     });
 }
+
+
 
 module.exports.newTask = function(req, res, next){
     var newTask = {

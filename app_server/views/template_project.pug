@@ -4,34 +4,32 @@ block scripts
 
 block content
   section
-    // The padding was necessary as the content kept overlaying the nav otherwise
-    h2 Template Project
-    form(action='edit_project_details.html')
+    form(action='/projects/' + project._id + '/edit')
       fieldset
         legend Project Details:
         table
           tr
             td Game Name:
-            td game name
+            td= project.title
         br
-        | &#x9;&#x9;&#x9;&#x9;Game Description:
+        | Game Description:
         br
-        div(name='game_description') Game description.
+        div(name='game_description')=project.description
         br
         input(type='submit' value='Edit Project Details')
     br
-    form(action='invite.html')
+    form(action='/projects/' + project._id + '/invite' method='post')
       fieldset
         legend Group Members:
         table
           tr
             td Game Leader:
-            td game leader
+            td=project.leader
           tr
             td Group members:
-            td Josh, Mia, Connor
+            td=project.members.join(', ')
         br
-        input#new_member(type='text' name='new_member' value='')
+        input#new_member(type='text' name='member' value='')
         input(type='submit' value='Invite New Member')
     br
     form

@@ -4,24 +4,22 @@ block scripts
 
 block content
   section
-    // The padding was necessary as the content kept overlaying the nav otherwise
-    h2 Edit Project Details
-    form
+    form(action="/projects/"+project._id+"/edit" method="post")
       fieldset
         legend Project infomation:
         table
           tr
             td Game Leader:
-            td
-              | current user
+            td= project.leader
           tr
             td Game Name:
-            td
-              input(type='text' name='game_name' required='required')
+            td 
+              input(type='text' name='title' value=project.title required='required')
         br
-        | &#x9;&#x9;&#x9;&#x9;Game Description:
+        | Game Description:
         br
-        textarea(name='game_description' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+        textarea(name='description' wrap='soft' 
+          style='height: 120px; width: 300px; font-size: 90%')=project.description
         br
         br
         input(type='submit' value='Confirm Changes')

@@ -14,12 +14,15 @@ router.post('/profile', ctrlAcc.prof);
 
 /* GET projects page. */
 router.get('/projects', ctrlProjects.prjList);
+router.get('/projects/:id/edit', ctrlProjects.editProject);
+router.post('/projects/:id/edit', ctrlProjects.editPrj);
 router.get('/projects/delete/:id', ctrlProjects.delPrj);
 
 router.get('/new_project', ctrlProjects.prjCreate);
 router.post('/new_project', ctrlProjects.prjCre);
 
 router.get('/projects/:id', ctrlProjects.myProject);
+router.post('/projects/:id/invite', ctrlProjects.invite)
 
 
 /* GET chat page. */

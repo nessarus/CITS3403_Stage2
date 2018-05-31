@@ -12,7 +12,8 @@ block content
         th(width='160px') Game Name
         th Game Description
         th(width='100px') Game Leader
-        th Members
+        th Group
+        th Edit
         th Remove
       each project in projects
         tr
@@ -23,16 +24,11 @@ block content
           td= project.leader
           td= project.members.length
           td
+            form(action='/projects/' + project._id + '/edit')
+              input(type='submit' value='Edit')
+          td
             form(action='/projects/delete/' + project._id)
               input(type='submit' value='Delete')
-      tr
-        td
-          a(href='template_project.html') template_project.html
-          br
-        td
-          | Click this project for the layout of a project.
-        td Joshua, Mia, Connor
-        td 3
     br
     form(action='/new_project')
       input(type='submit' value='Create New Project')
