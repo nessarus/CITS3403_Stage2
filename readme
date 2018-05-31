@@ -1,9 +1,21 @@
+The GameDev website can be accessed by going to:
+    https://secure-fjord-72738.herokuapp.com/
 
--heroku for viewing pages online
-
-https://secure-fjord-72738.herokuapp.com/
+How to setup new server on Heroku: 
+1. Remove old remote heroku:
+    \% git remote rm heroku
+2. Start heroku 
+    \% heroku login
+    \% heroku create
+3. Note the url of the website
+4. Send your files to the new instance: 
+    \% git push heroku master
+5. Start Heroku running 
+    \% heroku ps:scale web=1 
 
 -mlab online mongoose storage
 -to keep the mongo data saved to a cloud platform use mongoose connection with the mlabs connection line, 'admin' is the username and 'bongoadmin' the password, 'gamedevwebsite' is the database name
 var dbURI = 'mongodb://admin:bongoadmin@ds225010.mlab.com:25010/gamedevwebsite';
 mongoose.connect(dbURI);
+
+
