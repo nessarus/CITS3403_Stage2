@@ -23,7 +23,7 @@ module.exports.profile = function(req, res){
 };
 
 module.exports.prof = function(req, res){
-    Account.update({user : req.user}, {
+    Account.update({_id: req.user}, { $set: {
         first: req.body.first,
         last: req.body.last,
         mobile: req.body.mobile,
@@ -31,8 +31,18 @@ module.exports.prof = function(req, res){
         expertise: req.body.expertise,
         interests: req.body.interests,
         genres: req.body.genres
-    })(req, res, function () {
-        res.redirect('/profile');
+    }}, function (err, data) {
+        if(err) {
+            console.log(err);
+            res.status(500);
+            res.render('error', {
+                message:err.message,
+                error:err
+            });
+        } else {
+            console.log(data, ' saved');
+            res.redirect('/profile');
+        }
     });
 }
 

@@ -40,7 +40,7 @@ block content
         br
         | &#x9;&#x9;&#x9;&#x9;Favourite Game Genres:
         br
-        textarea(name='genres' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')=user.genre
+        textarea(name='genres' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')=user.genres
         br
       br
       input(type='submit' value='Confirm Changes')

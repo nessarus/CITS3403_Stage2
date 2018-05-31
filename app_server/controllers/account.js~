@@ -16,15 +16,23 @@ module.exports.profile = function(req, res){
         res.redirect('/login');
     }
     console.log(req.user);
-    res.render('profile', { 
-        account : data[0], 
+    res.render('profile', {
         title : 'Profile', 
         user:req.user 
     });
 };
 
 module.exports.prof = function(req, res){
-    Account.update({user : req.user}, {
+    Account.findById(req.user, function (err, account) {
+        if(err){
+            console.log(err);
+            res.status(500);
+            res.render('error',{
+                message:err.message,
+                error:err
+            });
+        }
+        
         first: req.body.first,
         last: req.body.last,
         mobile: req.body.mobile,
@@ -68,7 +76,7 @@ module.exports.regist = function(req, res) {
         req.body.password, 
         function(err, account) {
             if (err) {
-                return res.render('register', { msg : 'rego failed'});
+                return res.render('registeruser', { msg : 'rego failed'});
             }
             passport.authenticate('local')(req, res, function () {
                 res.redirect('/');
