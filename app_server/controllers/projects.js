@@ -4,8 +4,6 @@ require("../models/Project");
 
 var Project = mongoose.model('Project');
 
-
-
 //Project List
 module.exports.prjList = index;
 function index(req, res, next){
@@ -165,26 +163,6 @@ module.exports.editPrj = function(req, res, next){
         }
     );   
 }
-
-/* module.exports.newPrj = function(req, res, next){
-    var newProject = new Project({
-        title: req.body.title, 
-        description: req.body.description});
-    newProject.save(function(err,data){
-        if(err){
-            console.log(err);
-            res.status(500);
-            res.render('error',{
-                message:err.message,
-                error:err
-            });
-        }else{
-            console.log(data, ' saved');
-            index(req,res,next);
-        }
-    });
-} */
-
 
 // Tasks
 module.exports.newTask = function(req, res, next){

@@ -6,7 +6,8 @@ var db;
 describe('Account', function() {
 
   before(function(done) {
-    db = mongoose.connect('mongodb://admin:bongoadmin@ds225010.mlab.com:25010/gamedevwebsite');
+    db = mongoose.connect('mongodb://localhost/test');
+	//db = mongoose.connect('mongodb://admin:bongoadmin@ds225010.mlab.com:25010/gamedevwebsite');
    done();
   });
 

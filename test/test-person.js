@@ -5,15 +5,9 @@ var AccountCtrl = require('./../app_server/controllers/account.js');
 require('./../app_server/models/account.js');
 var Account = mongoose.model('Account');
 
-var DOB1, DOB2;
 
 describe('Account',function(){
   describe('Account-Basic', function(){//group test cases together
-  
-    before(function(){//before the tests begin
-      DOB1 = new Date(2001, 12, 24);
-      DOB2 = new Date(2001, 1, 24);
-    });
   
     after(function(){//afert all tests are completed
       mongoose.connection.close();
@@ -24,14 +18,7 @@ describe('Account',function(){
     });
   
     //run tests
-    it('tests age for late birthday', function(){
-      assert.equal(AccountCtrl.age(DOB1), 14, 'Age should be 14');
-      });
-  
-    it('tests age for early birthday', function(){
-      assert.equal(AccountCtrl.age(DOB2), 15, 'Age should be 15');
-      });
-    
+
     afterEach(function(){//run after each test
       //nothing to cleanup
     });
@@ -49,7 +36,7 @@ describe('Account',function(){
     });
 
     beforeEach(function(done){
-      var Account = new Account({name:'Tim', email:'tim@mail', age:37});
+      var Account = new Account({name:'Tim', email:'tim@mail',});
       Account.save(function(error){
         if (error) console.log('error');
 	else console.log('data created');
@@ -59,7 +46,7 @@ describe('Account',function(){
 
     it('should return a Account', function(done){
       Account.findOne({name:'Tim'}, function(err, data){
-        assert.deepEqual([data.name,data.email,data.age], ['Tim','tim@mail',37], 'returns Tim, tim@mail, 37');
+        assert.deepEqual([data.name,data.email,], ['Tim','tim@mail'], 'returns Tim, tim@mail');
 	done();
       });
     });
