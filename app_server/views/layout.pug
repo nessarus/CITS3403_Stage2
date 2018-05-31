@@ -14,16 +14,13 @@ html
           // I made this logo using GIMP
           img(src='/images/logo.PNG', alt='logo', style='margin: 0; height: 100px; float: left')
         br
-        //maybe try do a user/not user nav switch for register andf my profile as only one should be visible at a time
 
         if (user)
           p Welcome #{user.username}
   nav
     // Nav links area.
     //login  and logout switch depending on whether logged in or not
-    ///\ sasme with profile and register
-    //u can change it back if you dont like  it/change the order of it for convinence
-    //added new_projects for more stuff as well
+    ///\ same with profile and register
     ul
       li
         a(href='/') Home      
@@ -46,7 +43,6 @@ html
         if (user)
           a(href="/logout") Logout  
   block content
-  //add breaks to extend page?
   block foot
     footer
       br
