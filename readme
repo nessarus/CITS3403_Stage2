@@ -1,7 +1,9 @@
 
+-heroku for viewing pages online
+
 https://secure-fjord-72738.herokuapp.com/
 
-
+-mlab online mongoose storage
 -to keep the mongo data saved to a cloud platform use mongoose connection with the mlabs connection line, 'admin' is the username and 'bongoadmin' the password, 'gamedevwebsite' is the database name
 var dbURI = 'mongodb://admin:bongoadmin@ds225010.mlab.com:25010/gamedevwebsite';
 mongoose.connect(dbURI);
