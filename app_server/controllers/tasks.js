@@ -1,11 +1,8 @@
-
 var mongoose = require("mongoose");
 require("../models/db")
 require("../models/Project");
 
 var Project = mongoose.model('Task');
-
-
 
 //Retrieve
 module.exports.taskList = index;
@@ -28,16 +25,6 @@ function index(req, res, next){
         }
     )
 }
-
-
-/*
-module.exports.prjList = function(req, res, next) {
-    res.render('prjList', { title: 'List of projects', projects: [
-        {title: 'one', description: 'project one', tasks:[{title:"prj 1 task 1"}]},
-        {title: 'two', description: 'project two', tasks:[{title:"prj 2 task 1"}]}
-    ] });
-}
-*/
 
 module.exports.newPrj = function(req, res, next){
     var newProject = new Project({
@@ -95,7 +82,6 @@ module.exports.delPrj = function(req, res, next){
 
 module.exports.delTask = function(req, res, next){
 
-
     Project.findOne({_id: req.params.pid}, function(err, data){
         
         if(err){
@@ -106,7 +92,6 @@ module.exports.delTask = function(req, res, next){
                 error:err
             });
         }else{
-            //console.log(data.tasks);
             data.tasks.id(req.params.tid).remove();
             data.save( function(err,data){
                 if(err){
@@ -116,9 +101,7 @@ module.exports.delTask = function(req, res, next){
                         message:err.message,
                         error:err
                     });
-                }else{
-                    //data.tasks.id(req.params.tid).remove();
-                    
+                }else{                  
                     console.log(req.params.tid, 'of', req.params.pid, ' removed');
                     index(req,res,next);
                 }
@@ -128,4 +111,3 @@ module.exports.delTask = function(req, res, next){
     });
         
 }
-//module.exports = prjList;
