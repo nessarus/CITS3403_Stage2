@@ -45,7 +45,10 @@ block content
             th(style='width:18%') Importance
             th(style='width:8%') Deadline
             th(style='width:8%') Remove
-          each task in project.tasks
+          - var list = project.tasks
+          - list.sort(function(a, b){a = new Date(a.deadline);b = new Date(b.deadline);return a>b ? 1 : a<b ? -1 : 0;})
+          - list.sort(function(a, b){a = a.importance;b = b.importance;return a>b ? 1 : a<b ? -1 : 0;})
+          each task in list
             tr
               td=task.title
               td=task.description
@@ -60,11 +63,11 @@ block content
               input#descTask(type='text' name='description' value='' style='width:100%')
             td
               select#impTask(name='importance' style='width:100%')
-                option Urgent
-                option High Priority
-                option(selected='selected') Routine
-                option Low Priority
-                option No Priority
+                option 1 Urgent
+                option 2 High Priority
+                option(selected='selected') 3 Routine
+                option 4 Low Priority
+                option 5 No Priority
             td
               input#dateTask(type='date' name='deadline' style='width:auto' required)
             td
