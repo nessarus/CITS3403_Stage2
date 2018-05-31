@@ -9,18 +9,12 @@ var taskSchema = new mongoose.Schema(
     }
 );
 
-var memberSchema = new mongoose.Schema(
-    {
-        user: String,
-    }
-);
-
 var projectSchema = new mongoose.Schema(
     {
-        title:String,
+        title: String,
         description: String,
         leader: String,
-        members: [memberSchema],
+        members: [String],
         tasks: [taskSchema]
     }
 );

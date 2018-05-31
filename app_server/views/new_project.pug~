@@ -3,21 +3,21 @@ extends layout
 block content
   section
     h2 New Project
-    form(action="/new_project" method="post")
+    form
       fieldset
         legend Project infomation:
         table
           tr
             td Game Leader:
-            td= user.username
+            td = user.username
           tr
             td Game Name:
             td
-              input(type='text' name='title' required='required')
+              input(type='text' name='game_name' required='required')
         br
         | Game Description:
         br
-        textarea(name='description' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
+        textarea(name='game_description' wrap='soft' style='height: 120px; width: 300px; font-size: 90%')
         br
         br
         input(type='submit' value='Create Project')

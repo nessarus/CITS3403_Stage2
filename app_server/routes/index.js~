@@ -7,11 +7,16 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', ctrlAcc.welcome);
 router.get('/register', ctrlAcc.register);
+router.post('/register', ctrlAcc.regist);
 router.get('/profile', ctrlAcc.profile);
+router.post('/profile', ctrlAcc.prof);
 router.get('/projects', ctrlProjects.prjList);
+router.get('/projects/:id', ctrlProjects.myProject);
+
+
 router.get('/chat', ctrlAcc.chat);
 router.get('/about', ctrlAcc.about);
-router.post('/register', ctrlAcc.regist);
+
 
 router.get('/projects', ctrlProjects.prjList);
 router.get('/new_project', ctrlProjects.prjCreate);

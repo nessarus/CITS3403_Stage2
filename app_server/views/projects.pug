@@ -1,4 +1,6 @@
 extends layout
+block stylesheets
+  link(rel='stylesheet', href='/stylesheets/projects.css')
 block scripts
   script(src='/javascripts/projects.js')
 
@@ -10,40 +12,19 @@ block content
         th(width='160px') Game Name
         th Game Description
         th(width='100px') Game Leader
-        th No. Team Members
-      tr
-        td
-          a(href='CatSimulator.html') Cat Simulator
-          br
-        td
-          | Cat sim is a simulator where you play as a cat with
-          | different environments and different tasks. There are
-          | different gamemodes, survival, story, free roam. Play
-          | as different cats while manovering around in whichever
-          | game mode you please.
-        td Sarah Watson
-        td 102
-      tr
-        td
-          a(href='StormHeros.html') Storm Heros
-          br
-        td
-          | Play as a bunch of unlikely heros as you must defend
-          | your homeland from the Orc invaders. With many different
-          | characters to choose from with many different skills.
-          | Have hours of playtime with different team combinations.
-        td Oliver King
-        td 94
-      tr
-        td
-          a(href='Deadlands.html') Deadlands
-          br
-        td
-          | Survive in the wastelands of Deadlands, a post apocalyptic
-          | setting where you must stop an evil corporation destroying
-          | the planet you call home.
-        td Emily Smith
-        td 74
+        th Members
+        th Remove
+      each project in projects
+        tr
+          td 
+            a(href="/projects/"+project._id) #{project.title}
+            br
+          td= project.description
+          td= project.leader
+          td= project.members.length
+          td
+            form(action='/projects/delete/' + project._id)
+              input(type='submit' value='Delete')
       tr
         td
           a(href='template_project.html') template_project.html

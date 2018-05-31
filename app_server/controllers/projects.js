@@ -6,7 +6,7 @@ var Project = mongoose.model('Project');
 
 
 
-//Retrieve
+//Project List
 module.exports.prjList = index;
 function index(req, res, next){
     // if user is not logged-in redirect back to login page //
@@ -24,16 +24,27 @@ function index(req, res, next){
                 console.log('Find complete');
 
                 res.render('projects', {
-                    title: 'List of projects', projects:data, user:req.user});
+                    title: 'My Projects', projects:data, user:req.user});
                     
             }
         }
     )
 }
 
-//Retrieve
+//My Projects page
+module.exports.myProject = myProject;
+function myProject(req, res){
+    res.render('index', { user : req.user, title : 'gameDev' });
+}
+
+
+
+//New Project page
 module.exports.prjCreate = pCreate;
 function pCreate(req, res, next){
+    if (req.user == null){
+        res.redirect('/login');
+    }
     Project.find().exec(
         function(err, data){
             if(err){
@@ -50,6 +61,42 @@ function pCreate(req, res, next){
             }
         }
     )
+}
+module.exports.prjCre = function(req, res, next){
+    var newProject = new Project({
+        title: req.body.title,
+        description: req.body.description, 
+        leader: req.user.username,
+        members: [req.user.username]
+    });
+    newProject.save(function(err,data){
+        if(err){
+            console.log(err);
+            res.status(500);
+            res.render('error',{
+                message:err.message,
+                error:err
+            });
+        }else{
+            console.log(data, ' saved');
+            res.redirect('/projects');
+        }
+    });
+}
+module.exports.delPrj = function(req, res, next){    
+    Project.remove({_id:req.params.id}, function(err,data){
+        if(err){
+            console.log(err);
+            res.status(500);
+            res.render('error',{
+                message:err.message,
+                error:err
+            });
+        }else{
+            console.log(req.params.id, ' removed');
+            res.redirect('/projects');
+        }
+    });   
 }
 
 
@@ -99,26 +146,9 @@ module.exports.newTask = function(req, res, next){
         }
     });   
 }
-module.exports.delPrj = function(req, res, next){
-    
-    Project.remove({_id:req.params.id}, function(err,data){
-        if(err){
-            console.log(err);
-            res.status(500);
-            res.render('error',{
-                message:err.message,
-                error:err
-            });
-        }else{
-            console.log(req.params.id, ' removed');
-            index(req,res,next);
-        }
-    });   
-}
+
 
 module.exports.delTask = function(req, res, next){
-
-
     Project.findOne({_id: req.params.pid}, function(err, data){
         
         if(err){
