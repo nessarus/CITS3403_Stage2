@@ -3,7 +3,7 @@ extends layout
 block content
   section
     h2 Login
-    form(action="/login",method="post")
+    form(action="/login", method="post")
       fieldset
         legend login infomation:
         table
