@@ -1,9 +1,12 @@
 extends layout
+block stylesheets
+  link(rel='stylesheet', href='/stylesheets/projects.css')
 block scripts
   script(src='/javascripts/template_project.js')
 
 block content
   section
+    h2=project.title
     form(action='/projects/' + project._id + '/edit')
       fieldset
         legend Project Details:
@@ -32,7 +35,7 @@ block content
         input#new_member(type='text' name='member' value='')
         input(type='submit' value='Invite New Member')
     br
-    form
+    form(action='/projects/'+ project._id+'/new' method='post')
       fieldset
         legend Group Tasks:
         table#myTable
@@ -42,20 +45,28 @@ block content
             th(style='width:18%') Importance
             th(style='width:8%') Deadline
             th(style='width:8%') Remove
+          each task in project.tasks
+            tr
+              td=task.title
+              td=task.description
+              td=task.importance
+              td=task.deadline.getDate()+'/'+task.deadline.getMonth()+'/'+task.deadline.getFullYear()
+              td
+                a.button(href='/projects/'+project._id+'/delete/'+task.id) Remove
           tr
             td
-              input#newTask(type='text' name='newtask' value='NewTask' style='width:100%')
+              input#newTask(type='text' name='title' value='NewTask' style='width:100%' required)
             td
               input#descTask(type='text' name='description' value='' style='width:100%')
             td
-              select#impTask(style='width:100%')
+              select#impTask(name='importance' style='width:100%')
                 option Urgent
                 option High Priority
                 option(selected='selected') Routine
                 option Low Priority
                 option No Priority
             td
-              input#dateTask(type='date' name='deadline' style='width:auto')
+              input#dateTask(type='date' name='deadline' style='width:auto' required)
             td
-              button(type='button' onclick='insertTask()') Create Task
+              input(type='submit' value='Create Task')
     br

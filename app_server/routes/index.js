@@ -24,6 +24,9 @@ router.post('/new_project', ctrlProjects.prjCre);
 router.get('/projects/:id', ctrlProjects.myProject);
 router.post('/projects/:id/invite', ctrlProjects.invite)
 
+/* tasks */
+router.post('/projects/:id/new', ctrlProjects.newTask);
+router.get('/projects/:pid/delete/:tid', ctrlProjects.delTask);
 
 /* GET chat page. */
 router.get('/chat', ctrlAcc.chat);
@@ -34,14 +37,5 @@ router.post('/register', ctrlAcc.regist);
 router.get('/login', ctrlAcc.loginForm);
 router.post('/login', ctrlAcc.login);
 router.get('/logout', ctrlAcc.logout);
-
-
-
-//router.get('/:id/', ctrlProjects.taskList);
-//router.post('/:id/new', ctrlProjects.newTask);
-//router.get('/:pid/delete/:tid', ctrlProjects.delTask);
-
-//router.get('/register', ctrlAcc.register);
-
 
 module.exports = router;

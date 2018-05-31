@@ -13,7 +13,7 @@ function index(req, res, next){
     if (req.user == null){
         res.redirect('/login');
     }
-    Project.find().exec(
+    Project.find({members:req.user.username}).exec(
         function(err, data){
             if(err){
                 res.render('error', {
@@ -166,7 +166,7 @@ module.exports.editPrj = function(req, res, next){
     );   
 }
 
-module.exports.newPrj = function(req, res, next){
+/* module.exports.newPrj = function(req, res, next){
     var newProject = new Project({
         title: req.body.title, 
         description: req.body.description});
@@ -183,14 +183,17 @@ module.exports.newPrj = function(req, res, next){
             index(req,res,next);
         }
     });
-}
+} */
 
 
-
+// Tasks
 module.exports.newTask = function(req, res, next){
     var newTask = {
-        title: req.body.title, 
-        deadline: req.body.deadline};
+        title: req.body.title,
+        description: req.body.description,
+        importance: req.body.importance,
+        deadline: req.body.deadline
+    };
     Project.update({_id:req.params.id}, {$push: {tasks:newTask}}, function(err,data){
         if(err){
             console.log(err);
@@ -201,15 +204,13 @@ module.exports.newTask = function(req, res, next){
             });
         }else{
             console.log(data, ' saved');
+            res.redirect('/projects/'+req.params.id);
             index(req,res,next);
         }
     });   
 }
-
-
 module.exports.delTask = function(req, res, next){
     Project.findOne({_id: req.params.pid}, function(err, data){
-        
         if(err){
             console.log(err);
             res.status(500);
@@ -230,14 +231,11 @@ module.exports.delTask = function(req, res, next){
                     });
                 }else{
                     //data.tasks.id(req.params.tid).remove();
-                    
                     console.log(req.params.tid, 'of', req.params.pid, ' removed');
-                    index(req,res,next);
+                    res.redirect('/projects/'+req.params.pid);
                 }
             });   
 
         }
     });
-        
 }
-//module.exports = prjList;

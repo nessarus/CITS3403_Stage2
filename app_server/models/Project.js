@@ -4,7 +4,7 @@ var taskSchema = new mongoose.Schema(
     {
         title: String,
         description: String,
-        Importance: String,
+        importance: String,
         deadline: Date
     }
 );
