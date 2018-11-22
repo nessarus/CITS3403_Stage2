@@ -20,12 +20,4 @@ How to setup new server on Heroku:
 
 - Mlab used for online mongoose storage
 -To keep the mongo data saved to a cloud platform use mongoose connection with the mlabs connection line
--'admin' is the username and 'bongoadmin' the password, 'gamedevwebsite' is the database name
 -this code can be found from the mlabs website after the database is created
-
-var dbURI = 'mongodb://admin:bongoadmin@ds225010.mlab.com:25010/gamedevwebsite';
-mongoose.connect(dbURI);
-
-- Put this code into the db.js file which is used to call processes and make sure they start and close properly
-
-
