@@ -1,6 +1,6 @@
-# GameDev
+# GameDev Website
 
-GameDev is a student project to demonstrate agile web development. 
+GameDev Website is a student project to demonstrate agile web development. 
 
 ### Access the site
 The GameDev website can be accessed by going to:
