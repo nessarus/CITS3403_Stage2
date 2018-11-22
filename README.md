@@ -48,4 +48,4 @@ We set up the app server by routes, controller, model, test and views
 - This code can be found from the mlabs website after the database is created
 
 ### CITS3403 Agile Web Development 
-GameDev is a student project from the course CITS3403 Agile Web Development in the University of Western Australia, semester one of 2018. 
+GameDev Website is a student project from the course CITS3403 Agile Web Development in the University of Western Australia, semester one of 2018. 
