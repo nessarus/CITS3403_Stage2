@@ -4,7 +4,7 @@ GameDev Website is a student project to demonstrate agile web development.
 
 ### Access the site
 The GameDev website can be accessed by going to:
->    https://secure-fjord-72738.herokuapp.com/
+>    https://gamedevnow.herokuapp.com/
 
 ### Our Group
 Mia wolski: 22260881  
